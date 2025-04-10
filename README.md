@@ -4,29 +4,36 @@ Python Flask API that serves e-book information in the context of a digital onli
 ## Endpoints
 POST parameters are sent as form-data.
 
+All endpoints marked as "Auth" require authentication via the session token `X-Session-Token`, which will be included in the request's header.
+
 <b>User endpoints</b>:
-|Method|Endpoint|POST params|Description|
-|------|--------|-----------|-----------|
-|GET|/books?n=<number_of_books>||Retrieve a random number of books|
-|GET|/books?s=<search_text>||Retrieve the books whose title includes a search term|
-|GET|/books?a=<author_id>||Retrieve the books written by a specific author|
-|GET|/books/<book_id>||Retrieve information about a book|
-|GET|/authors||Retrieve all authors|
-|GET|/publishers||Retrieve all publishers|
-|GET|/users/<user_id>||Retrieve information about a user|
-|POST|/users|email, password, first_name, last_name, address, phone_number, birth_date|Create a new user. All parameters are mandatory. Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number and one special character|
-|PUT|/users/<user_id>|email (optional), first_name (optional), last_name (optional), address (optional), phone_number (optional), birth_date (optional)|Update information about a user. At least one parameter must have a value|
-|DELETE|/users/<user_id>||Delete a user and their loans|
-|POST|/users/login|email, password|Validate user login information|
-|POST|/users/<user_id>/books/<book_id>||Loan a book if it has not been loaned by the same user in the previous 30 days|
+|Method|Endpoint|POST params|Auth|Description|
+|------|--------|-----------|----|-----------|
+|GET|/books?n=<number_of_books>|||Retrieve a random number of books|
+|GET|/books?s=<search_text>|||Retrieve the books whose title includes a search term|
+|GET|/books?a=<author_id>|||Retrieve the books written by a specific author|
+|GET|/books/<book_id>|||Retrieve information about a book|
+|GET|/authors|||Retrieve all authors|
+|GET|/publishers|||Retrieve all publishers|
+|GET|/users/<user_id>||X|Retrieve information about a user|
+|POST|/users|email, password, first_name, last_name, address, phone_number, birth_date||Create a new user. All parameters are mandatory. Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number and one special character|
+|PUT|/users/<user_id>||X|email (optional), first_name (optional), last_name (optional), address (optional), phone_number (optional), birth_date (optional)|Update information about a user. At least one parameter must have a value|
+|DELETE|/users/<user_id>||X|Delete a user and their loans|
+|POST|/users/<user_id>/books/<book_id>||X|Loan a book if it has not been loaned by the same user in the previous 30 days|
 
 <b>Admin endpoints</b>:
-|Method|Endpoint|POST params|Description|
-|------|--------|-----------|-----------|
-|GET|/admin/books/<book_id>||Retrieve information about a book and its loan history|
-|POST|/admin/books|title, author_id, publisher_id, publishing_year|Create a new book. All parameters are mandatory. Year must be lower or equal than the present year|
-|POST|/admin/authors|first_name, last_name|Create a new author. All parameters are mandatory|
-|POST|/admin/publishers|name|Create a new publisher. The parameter is mandatory|
+|Method|Endpoint|POST params|Auth|Description|
+|------|--------|-----------|----|-----------|
+|GET|/admin/books/<book_id>||X|Retrieve information about a book and its loan history|
+|POST|/admin/books|title, author_id, publisher_id, publishing_year|X|Create a new book. All parameters are mandatory. Year must be lower or equal than the present year|
+|POST|/admin/authors|first_name, last_name|X|Create a new author. All parameters are mandatory|
+|POST|/admin/publishers|name|X|Create a new publisher. The parameter is mandatory|
+
+<b>Authentication endpoints</b>:
+|Method|Endpoint|POST params|Auth|Description|
+|------|--------|-----------|----|-----------|
+|POST|/auth/login|email, password||Login|
+|POST|/auth/logout||X|Logout|
 
 <b>Return values</b>:
 
@@ -182,6 +189,7 @@ POST parameters are sent as form-data.
 ```json
 {
     "user_id": 2683,
+    "auth_token": "899a3173-d1bf-4a80-ae70-2c8377be2b02",
     "is_admin": 0
 }
 ```

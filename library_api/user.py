@@ -111,11 +111,11 @@ def get_user(user_id: int):
 
     if user == None:
         return error_message('User not found'), 404
-    else:        
-        user_info = {key: user[key] for key in user.keys()}
-        user_info['birth_date'] = str(user_info['birth_date'])
-        user_info['membership_date'] = str(user_info['membership_date'])
-        return jsonify(user_info), 200
+
+    user_info = {key: user[key] for key in user.keys()}
+    user_info['birth_date'] = str(user_info['birth_date'])
+    user_info['membership_date'] = str(user_info['membership_date'])
+    return jsonify(user_info), 200
 
 # Add new user
 @bp_user.route('/users', methods=['POST'])
@@ -167,35 +167,6 @@ def post_user():
 
                 return jsonify({'user_id': user_id}), 201
 
-# Validate login information
-@bp_user.route('/users/login', methods=['POST'])
-def validate_user():
-    email = request.form.get('email')
-    password = request.form.get('password')
-
-    if not (email and password):
-        return error_message(), 400
-    else:
-        db = get_db()
-        user = db.execute(
-            '''
-            SELECT 
-                nMemberID AS user_id,
-                bAdmin AS admin
-            FROM tmember
-            WHERE cEmail = ?
-            AND cPassword = ?
-            ''',
-            (email, password)
-        ).fetchone()
-        if user == None:
-            return error_message('Wrong credentials'), 401
-        else:
-            return jsonify({
-                'user_id': user['user_id'],
-                'is_admin': user['admin']
-            })
-        
 # Delete a specific user
 @bp_user.route('/users/<int:user_id>', methods=['DELETE'])
 def delete_user(user_id: int):
@@ -221,8 +192,8 @@ def delete_user(user_id: int):
     cursor.close()
     if deleted_rows == 0:
         return error_message('The user could not be deleted'), 500
-    else:
-        return jsonify({'status': 'ok'}), 200
+    
+    return jsonify({'status': 'ok'}), 200
 
 # Update a specific user
 @bp_user.route('/users/<int:user_id>', methods=['PUT'])

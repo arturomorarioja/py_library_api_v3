@@ -49,3 +49,25 @@ def basic_book_info(book_id: int):
         book_info = {key: book[key] for key in book.keys()}
         book_info['cover'] = cover
         return book_info
+    
+"""
+Validates whether an authentication token exists
+"""
+def user_by_token(token):
+    if not token:
+        return 0
+    
+    db = get_db()
+    user = db.execute(
+        '''
+        SELECT nMemberID AS user_id
+        FROM tmember
+        WHERE cAuthToken = ?
+        ''',
+        (token,)
+    ).fetchone()
+
+    if user == None:
+        return 0
+    
+    return user['user_id']

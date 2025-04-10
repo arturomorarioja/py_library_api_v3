@@ -2,7 +2,7 @@
 Library API
 """
 __author__ = 'Arturo Mora-Rioja'
-__date__ = 'October/November 2024'
+__date__ = 'April 2025'
 
 import os
 from dotenv import load_dotenv
@@ -11,6 +11,7 @@ from flask_cors import CORS
 from library_api import database
 from library_api.admin import bp_admin
 from library_api.user import bp_user
+from library_api.auth import bp_auth
 
 load_dotenv()
 
@@ -24,6 +25,7 @@ def create_app():
 
     app.register_blueprint(bp_admin, url_prefix='/admin')
     app.register_blueprint(bp_user)
+    app.register_blueprint(bp_auth)
 
     print(f'### LIBRARY API ###')
     print(f'Current environment: {os.getenv("ENVIRONMENT")}')
