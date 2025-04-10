@@ -181,7 +181,8 @@ POST parameters are sent as form-data.
 - POST /users/login
 ```json
 {
-    "user_id": 2683
+    "user_id": 2683,
+    "is_admin": 0
 }
 ```
 ```json
