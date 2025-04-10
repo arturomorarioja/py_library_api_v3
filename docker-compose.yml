@@ -1,0 +1,19 @@
+services:
+  python-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    volumes:
+      - .:/app.ro
+    environment:
+      - BOOK_COVER_BASE_URL=https://bookcover.longitood.com/bookcover
+    dns:
+      - 8.8.8.8
+      - 1.1.1.1
+    networks:
+      - app_network
+  
+networks:
+  app_network:
