@@ -73,17 +73,22 @@ def user_by_token(token):
     return user['user_id']
 
 """
-Validates whether a user ID and its authentication token match
+Validates whether a user ID and its authentication token match.
+If is_admin is true, the user must also be an admin
 """
-def token_is_valid(user_id, auth_token):
-    db = get_db()
-    user = db.execute(
-        '''
+def token_is_valid(user_id, auth_token, is_admin = False):
+    sql = '''
         SELECT COUNT(*) AS total
         FROM tmember
         WHERE nMemberID = ?
         AND cAuthToken = ?
-        ''',
+    '''
+    if is_admin:
+        sql += ' AND bAdmin = 1'
+
+    db = get_db()
+    user = db.execute(
+        sql, 
         (user_id, auth_token)
     ).fetchone()
     return user['total'] > 0

@@ -1,0 +1,2312 @@
+{
+	"info": {
+		"_postman_id": "12b4dbde-344f-43f6-8c94-bbf3154ef171",
+		"name": "Library API v3",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11087769"
+	},
+	"item": [
+		{
+			"name": "books",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"publishing_company\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/books/{{BOOK_ID}}",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"books",
+						"{{BOOK_ID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "books random",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"publishing_company\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/books?n=15",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"books"
+					],
+					"query": [
+						{
+							"key": "n",
+							"value": "15"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "books search",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"publishing_company\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/books?s=winter",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"books"
+					],
+					"query": [
+						{
+							"key": "s",
+							"value": "winter"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "books by author",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"publishing_company\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/books?a=32",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"books"
+					],
+					"query": [
+						{
+							"key": "a",
+							"value": "32"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "books ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"publishing_company\");\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.title).to.eql(\"Do Androids Dream of Electric Sheep?\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/books/{{BOOK_ID}}",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"books",
+						"{{BOOK_ID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "authors",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"author_name\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/authors",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"authors"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "publishers",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"publisher_name\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/publishers",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"publishers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "users bad params",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Returns expected error message\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.error).to.equal('Incorrect parameters')\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/users",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "users existing email",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Returns expected error message\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.error).to.equal('The user already exists')\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "{{EMAIL_EXISTING_USER}}",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "LibraryAPI24!",
+							"type": "text"
+						},
+						{
+							"key": "first_name",
+							"value": "Jonas A.",
+							"type": "text"
+						},
+						{
+							"key": "last_name",
+							"value": "Krogh",
+							"type": "text"
+						},
+						{
+							"key": "address",
+							"value": "Lygten 37, 2400 København NV",
+							"type": "text"
+						},
+						{
+							"key": "phone_number",
+							"value": "55555555",
+							"type": "text"
+						},
+						{
+							"key": "birth_date",
+							"value": "2001-11-05",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/users",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "users bad pwd format",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Returns expected error message\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.error).to.equal('Incorrect password format')\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "{{EMAIL_NEW_USER}}",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "LibraryAPI",
+							"type": "text"
+						},
+						{
+							"key": "first_name",
+							"value": "Jonas A.",
+							"type": "text"
+						},
+						{
+							"key": "last_name",
+							"value": "Krogh",
+							"type": "text"
+						},
+						{
+							"key": "address",
+							"value": "Lygten 37, 2400 København NV",
+							"type": "text"
+						},
+						{
+							"key": "phone_number",
+							"value": "55555555",
+							"type": "text"
+						},
+						{
+							"key": "birth_date",
+							"value": "2001-11-05",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/users",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "users",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Returned user ID is a number\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.user_id).to.be.a('number');\r",
+							"    pm.environment.set(\"NEW_USER_ID\", jsonData.user_id);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "{{EMAIL_NEW_USER}}",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "{{PASSWORD_NEW_USER}}",
+							"type": "text"
+						},
+						{
+							"key": "first_name",
+							"value": "Jonas A.",
+							"type": "text"
+						},
+						{
+							"key": "last_name",
+							"value": "Krogh",
+							"type": "text"
+						},
+						{
+							"key": "address",
+							"value": "{{ADDRESS_NEW_USER}}",
+							"type": "text"
+						},
+						{
+							"key": "phone_number",
+							"value": "55555555",
+							"type": "text"
+						},
+						{
+							"key": "birth_date",
+							"value": "2001-11-05",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/users",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "auth/login bad nonexisting email",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 401\", function () {\r",
+							"    pm.response.to.have.status(401);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Returns expected error message\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.error).to.equal('Wrong credentials')\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "fake@mail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "{{PASSWORD_NEW_USER}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/auth/login",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "auth/login bad pwd",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 401\", function () {\r",
+							"    pm.response.to.have.status(401);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Returns expected error message\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.error).to.equal('Wrong credentials')\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "{{EMAIL_NEW_USER}}",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "wrong_password",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/auth/login",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "auth/login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"var jsonData = pm.response.json();\r",
+							"pm.test(\"Returned user ID is a number\", function () {\r",
+							"    pm.expect(jsonData.user_id).to.be.a('number');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Store returned authentication token\", function () {\r",
+							"    pm.environment.set(\"AUTH_TOKEN\", jsonData.auth_token);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "{{EMAIL_NEW_USER}}",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "{{PASSWORD_NEW_USER}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/auth/login",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "users new",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Expected address exists\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.address).to.eql(pm.variables.get(\"ADDRESS_NEW_USER\"));\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Session-Token",
+						"value": "{{AUTH_TOKEN}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{BASE_URL}}/users/{{NEW_USER_ID}}",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"users",
+						"{{NEW_USER_ID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "users/books loan no token",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Session-Token",
+						"value": "{{AUTH_TOKEN}}",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "{{BASE_URL}}/users/{{USER_ID}}/books/{{BOOK_ID}}",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"users",
+						"{{USER_ID}}",
+						"books",
+						"{{BOOK_ID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "users/books loan bad token",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Session-Token",
+						"value": "faketoken",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{BASE_URL}}/users/{{USER_ID}}/books/{{BOOK_ID}}",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"users",
+						"{{USER_ID}}",
+						"books",
+						"{{BOOK_ID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "users/books loan",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Session-Token",
+						"value": "{{AUTH_TOKEN}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{BASE_URL}}/users/{{NEW_USER_ID}}/books/{{BOOK_ID}}",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"users",
+						"{{NEW_USER_ID}}",
+						"books",
+						"{{BOOK_ID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "users/books loan again",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Session-Token",
+						"value": "{{AUTH_TOKEN}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{BASE_URL}}/users/{{USER_ID}}/books/{{BOOK_ID}}",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"users",
+						"{{USER_ID}}",
+						"books",
+						"{{BOOK_ID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "users bad params",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Returns expected error message\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.error).to.equal('Incorrect parameters')\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "X-Session-Token",
+						"value": "{{AUTH_TOKEN}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "{{EMAIL_NEW_USER_UPDATED}}",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "first_name",
+							"value": "Jonas A.",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "last_name",
+							"value": "Krogh",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "address",
+							"value": "{{ADDRESS_NEW_USER_UPDATED}}",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "phone_number",
+							"value": "88888888",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "birth_date",
+							"value": "1984-05-18",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/users/{{NEW_USER_ID}}",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"users",
+						"{{NEW_USER_ID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "users no token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 401\", function () {\r",
+							"    pm.response.to.have.status(401);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Returns error\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.error).to.equal('Missing authentication token')\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "X-Session-Token",
+						"value": "faketoken",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "{{EMAIL_NEW_USER_UPDATED}}",
+							"type": "text"
+						},
+						{
+							"key": "first_name",
+							"value": "Jonas A.",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "last_name",
+							"value": "Krogh",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "address",
+							"value": "{{ADDRESS_NEW_USER_UPDATED}}",
+							"type": "text"
+						},
+						{
+							"key": "phone_number",
+							"value": "88888888",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "birth_date",
+							"value": "1984-05-18",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/users/{{NEW_USER_ID}}",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"users",
+						"{{NEW_USER_ID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "users bad token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 401\", function () {\r",
+							"    pm.response.to.have.status(401);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Returns error\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.error).to.equal('Invalid authentication token')\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "X-Session-Token",
+						"value": "faketoken",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "{{EMAIL_NEW_USER_UPDATED}}",
+							"type": "text"
+						},
+						{
+							"key": "first_name",
+							"value": "Jonas A.",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "last_name",
+							"value": "Krogh",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "address",
+							"value": "{{ADDRESS_NEW_USER_UPDATED}}",
+							"type": "text"
+						},
+						{
+							"key": "phone_number",
+							"value": "88888888",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "birth_date",
+							"value": "1984-05-18",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/users/{{NEW_USER_ID}}",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"users",
+						"{{NEW_USER_ID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "users",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Returns ok status\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.status).to.equal('ok')\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "X-Session-Token",
+						"value": "{{AUTH_TOKEN}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "{{EMAIL_NEW_USER_UPDATED}}",
+							"type": "text"
+						},
+						{
+							"key": "first_name",
+							"value": "Jonas A.",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "last_name",
+							"value": "Krogh",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "address",
+							"value": "{{ADDRESS_NEW_USER_UPDATED}}",
+							"type": "text"
+						},
+						{
+							"key": "phone_number",
+							"value": "88888888",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "birth_date",
+							"value": "1984-05-18",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/users/{{NEW_USER_ID}}",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"users",
+						"{{NEW_USER_ID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "users new updated",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Expected address exists\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.email).to.eql(pm.variables.get(\"EMAIL_NEW_USER_UPDATED\"));\r",
+							"    pm.expect(jsonData.address).to.eql(pm.variables.get(\"ADDRESS_NEW_USER_UPDATED\"));\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Session-Token",
+						"value": "{{AUTH_TOKEN}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/users/{{NEW_USER_ID}}",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"users",
+						"{{NEW_USER_ID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "auth/logout",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "X-Session-Token",
+						"value": "{{AUTH_TOKEN}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{BASE_URL}}/auth/logout",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"auth",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "auth/login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"var jsonData = pm.response.json();\r",
+							"pm.test(\"Returned user ID is a number\", function () {\r",
+							"    pm.expect(jsonData.user_id).to.be.a('number');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Store returned authentication token\", function () {\r",
+							"    pm.environment.set(\"AUTH_TOKEN\", jsonData.auth_token);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Session-Token",
+						"value": "{{AUTH_TOKEN}}",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "{{EMAIL_NEW_USER_UPDATED}}",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "{{PASSWORD_NEW_USER}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/auth/login",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "users no token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 401\", function () {\r",
+							"    pm.response.to.have.status(401);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Returns error\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.error).to.equal('Missing authentication token')\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/users/{{NEW_USER_ID}}",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"users",
+						"{{NEW_USER_ID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "users bad token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 401\", function () {\r",
+							"    pm.response.to.have.status(401);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Returns error\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.error).to.equal('Invalid authentication token')\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "X-Session-Token",
+						"value": "faketoken",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{BASE_URL}}/users/{{NEW_USER_ID}}",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"users",
+						"{{NEW_USER_ID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "users",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Returns ok status\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.status).to.equal('ok')\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "X-Session-Token",
+						"value": "{{AUTH_TOKEN}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{BASE_URL}}/users/{{NEW_USER_ID}}",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"users",
+						"{{NEW_USER_ID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "auth/login admin",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"var jsonData = pm.response.json();\r",
+							"pm.test(\"Returned user ID is a number\", function () {\r",
+							"    pm.expect(jsonData.user_id).to.be.a('number');\r",
+							"    pm.environment.set(\"ADMIN_ID\", jsonData.user_id);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Store returned authentication token\", function () {\r",
+							"    pm.environment.set(\"AUTH_TOKEN\", jsonData.auth_token);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Session-Token",
+						"value": "{{AUTH_TOKEN}}",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "{{EMAIL_ADMIN}}",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "{{PASSWORD_ADMIN}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/auth/login",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "admin/books no token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 401\", function () {\r",
+							"    pm.response.to.have.status(401);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Returns error\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.error).to.equal('Missing authentication token')\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Session-Token",
+						"value": "{{AUTH_TOKEN}}",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "{{BASE_URL}}/admin/{{ADMIN_ID}}/books/{{BOOK_ID}}",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"admin",
+						"{{ADMIN_ID}}",
+						"books",
+						"{{BOOK_ID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "admin/books bad token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 401\", function () {\r",
+							"    pm.response.to.have.status(401);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Returns error\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.error).to.equal('Invalid authentication token')\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Session-Token",
+						"value": "faketoken",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{BASE_URL}}/admin/{{ADMIN_ID}}/books/{{BOOK_ID}}",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"admin",
+						"{{ADMIN_ID}}",
+						"books",
+						"{{BOOK_ID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "admin/books",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"publishing_company\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Session-Token",
+						"value": "{{AUTH_TOKEN}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{BASE_URL}}/admin/{{ADMIN_ID}}/books/{{BOOK_ID}}",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"admin",
+						"{{ADMIN_ID}}",
+						"books",
+						"{{BOOK_ID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "admin/publishers",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Returned publisher ID is a number\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.publisher_id).to.be.a('number');\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Session-Token",
+						"value": "{{AUTH_TOKEN}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "{{PUBLISHER_NAME}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/admin/{{ADMIN_ID}}/publishers",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"admin",
+						"{{ADMIN_ID}}",
+						"publishers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "admin/publishers bad exists",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Returns expected error message\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.error).to.equal('The publisher already exists')\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Session-Token",
+						"value": "{{AUTH_TOKEN}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "{{PUBLISHER_NAME}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/admin/{{ADMIN_ID}}/publishers",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"admin",
+						"{{ADMIN_ID}}",
+						"publishers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "admin/authors",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Returned author ID is a number\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.author_id).to.be.a('number');\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Session-Token",
+						"value": "{{AUTH_TOKEN}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "first_name",
+							"value": "{{AUTHOR_FIRST_NAME}}",
+							"type": "text"
+						},
+						{
+							"key": "last_name",
+							"value": "{{AUTHOR_LAST_NAME}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/admin/{{ADMIN_ID}}/authors",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"admin",
+						"{{ADMIN_ID}}",
+						"authors"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "admin/authors bad exists",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Returns expected error message\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.error).to.equal('The author already exists')\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Session-Token",
+						"value": "{{AUTH_TOKEN}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "first_name",
+							"value": "{{AUTHOR_FIRST_NAME}}",
+							"type": "text"
+						},
+						{
+							"key": "last_name",
+							"value": "{{AUTHOR_LAST_NAME}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/admin/{{ADMIN_ID}}/authors",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"admin",
+						"{{ADMIN_ID}}",
+						"authors"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "admin/books bad params",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Returns expected error message\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.error).to.equal('Incorrect parameters')\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Session-Token",
+						"value": "{{AUTH_TOKEN}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "{{NEW_BOOK_TITLE}}",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "author_id",
+							"value": "32",
+							"type": "text"
+						},
+						{
+							"key": "publishing_year",
+							"value": "2016",
+							"type": "text"
+						},
+						{
+							"key": "publisher_id",
+							"value": "149",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/admin/{{ADMIN_ID}}/books",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"admin",
+						"{{ADMIN_ID}}",
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "admin/books bad nonexisting author",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Returns expected error message\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.error).to.equal('The author does not exist')\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Session-Token",
+						"value": "{{AUTH_TOKEN}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "{{NEW_BOOK_TITLE}}",
+							"type": "text"
+						},
+						{
+							"key": "author_id",
+							"value": "9999",
+							"type": "text"
+						},
+						{
+							"key": "publishing_year",
+							"value": "2016",
+							"type": "text"
+						},
+						{
+							"key": "publisher_id",
+							"value": "149",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/admin/{{ADMIN_ID}}/books",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"admin",
+						"{{ADMIN_ID}}",
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "admin/books bad nonexisting publisher",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Returns expected error message\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.error).to.equal('The publishing company does not exist')\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Session-Token",
+						"value": "{{AUTH_TOKEN}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "{{NEW_BOOK_TITLE}}",
+							"type": "text"
+						},
+						{
+							"key": "author_id",
+							"value": "32",
+							"type": "text"
+						},
+						{
+							"key": "publishing_year",
+							"value": "2016",
+							"type": "text"
+						},
+						{
+							"key": "publisher_id",
+							"value": "9999",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/admin/{{ADMIN_ID}}/books",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"admin",
+						"{{ADMIN_ID}}",
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "admin/books",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Returned book ID is a number\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.book_id).to.be.a('number');\r",
+							"    pm.environment.set(\"NEW_BOOK_ID\", jsonData.book_id);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Session-Token",
+						"value": "{{AUTH_TOKEN}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "{{NEW_BOOK_TITLE}}",
+							"type": "text"
+						},
+						{
+							"key": "author_id",
+							"value": "32",
+							"type": "text"
+						},
+						{
+							"key": "publishing_year",
+							"value": "2016",
+							"type": "text"
+						},
+						{
+							"key": "publisher_id",
+							"value": "149",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/admin/{{ADMIN_ID}}/books",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"admin",
+						"{{ADMIN_ID}}",
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "admin/books bad exists",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Returns expected error message\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.error).to.equal('The book already exists')\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Session-Token",
+						"value": "{{AUTH_TOKEN}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "{{NEW_BOOK_TITLE}}",
+							"type": "text"
+						},
+						{
+							"key": "author_id",
+							"value": "32",
+							"type": "text"
+						},
+						{
+							"key": "publishing_year",
+							"value": "2016",
+							"type": "text"
+						},
+						{
+							"key": "publisher_id",
+							"value": "149",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/admin/{{ADMIN_ID}}/books",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"admin",
+						"{{ADMIN_ID}}",
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "auth/logout admin",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "X-Session-Token",
+						"value": "{{AUTH_TOKEN}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{BASE_URL}}/auth/logout",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"auth",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "books",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"publishing_company\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/books/{{BOOK_ID}}",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"books",
+						"{{BOOK_ID}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					"pm.test(\"Response time is less than 5000ms\", function () {\r",
+					"    pm.expect(pm.response.responseTime).to.be.below(5000);\r",
+					"});"
+				]
+			}
+		}
+	]
+}

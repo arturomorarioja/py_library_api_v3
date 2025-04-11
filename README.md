@@ -24,10 +24,10 @@ All endpoints marked as "Auth" require authentication via the session token `X-S
 <b>Admin endpoints</b>:
 |Method|Endpoint|POST params|Auth|Description|
 |------|--------|-----------|----|-----------|
-|GET|/admin/books/<book_id>||X|Retrieve information about a book and its loan history|
-|POST|/admin/books|title, author_id, publisher_id, publishing_year|X|Create a new book. All parameters are mandatory. Year must be lower or equal than the present year|
-|POST|/admin/authors|first_name, last_name|X|Create a new author. All parameters are mandatory|
-|POST|/admin/publishers|name|X|Create a new publisher. The parameter is mandatory|
+|GET|/admin/<user_id>/books/<book_id>||X|Retrieve information about a book and its loan history|
+|POST|/admin/<user_id>/books|title, author_id, publisher_id, publishing_year|X|Create a new book. All parameters are mandatory. Year must be lower or equal than the present year|
+|POST|/admin/<user_id>/authors|first_name, last_name|X|Create a new author. All parameters are mandatory|
+|POST|/admin/<user_id>/publishers|name|X|Create a new publisher. The parameter is mandatory|
 
 <b>Authentication endpoints</b>:
 |Method|Endpoint|POST params|Auth|Description|

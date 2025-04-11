@@ -2,13 +2,20 @@ from datetime import date
 from flask import Blueprint, request, jsonify, Response
 from library_api.database import get_db
 from library_api.utils import error_message
-from library_api.common import basic_book_info
+from library_api.common import basic_book_info, token_is_valid
 
 bp_admin = Blueprint('admin', __name__)
   
 # Return detailed book info by ID 
-@bp_admin.route('/books/<int:book_id>', methods=['GET'])
-def get_detailed_book(book_id: int):
+@bp_admin.route('/<int:user_id>/books/<int:book_id>', methods=['GET'])
+def get_detailed_book(user_id: int, book_id: int):
+    auth_token = request.headers.get('X-Session-Token');
+    if not auth_token:
+        return error_message('Missing authentication token'), 401
+
+    if not token_is_valid(user_id, auth_token, True):
+        return error_message('Invalid authentication token'), 401
+
     db = get_db()
     book_info = basic_book_info(book_id)
 
@@ -34,8 +41,15 @@ def get_detailed_book(book_id: int):
         return jsonify(book_info), 200
 
 # Add new book
-@bp_admin.route('/books', methods=['POST'])
-def post_book():
+@bp_admin.route('/<int:user_id>/books', methods=['POST'])
+def post_book(user_id: int):
+    auth_token = request.headers.get('X-Session-Token');
+    if not auth_token:
+        return error_message('Missing authentication token'), 401
+
+    if not token_is_valid(user_id, auth_token, True):
+        return error_message('Invalid authentication token'), 401
+
     title = request.form.get('title')
     author_id = request.form.get('author_id')
     publisher_id = request.form.get('publisher_id')
@@ -108,8 +122,15 @@ def post_book():
                             return jsonify({'book_id': book_id}), 201
 
 # Add new author
-@bp_admin.route('/authors', methods=['POST'])
-def post_author():
+@bp_admin.route('/<int:user_id>/authors', methods=['POST'])
+def post_author(user_id: int):
+    auth_token = request.headers.get('X-Session-Token');
+    if not auth_token:
+        return error_message('Missing authentication token'), 401
+
+    if not token_is_valid(user_id, auth_token, True):
+        return error_message('Invalid authentication token'), 401
+
     first_name = request.form.get('first_name').strip()
     last_name = request.form.get('last_name').strip()
 
@@ -150,8 +171,15 @@ def post_author():
                 return jsonify({'author_id': author_id}), 201
 
 # Add new publishing company
-@bp_admin.route('/publishers', methods=['POST'])
-def post_publisher():
+@bp_admin.route('/<int:user_id>/publishers', methods=['POST'])
+def post_publisher(user_id: int):
+    auth_token = request.headers.get('X-Session-Token');
+    if not auth_token:
+        return error_message('Missing authentication token'), 401
+
+    if not token_is_valid(user_id, auth_token, True):
+        return error_message('Invalid authentication token'), 401
+
     name = request.form.get('name').strip()
 
     if not name:
