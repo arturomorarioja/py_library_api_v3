@@ -3,7 +3,7 @@ from datetime import date, timedelta
 from flask import Blueprint, request, jsonify, Response
 from library_api.database import get_db
 from library_api.utils import error_message
-from library_api.common import basic_book_info
+from library_api.common import basic_book_info, token_is_valid
 
 bp_user = Blueprint('user', __name__)
 
@@ -97,6 +97,10 @@ def get_publishers():
 # Return information for a specific user
 @bp_user.route('/users/<int:user_id>', methods=['GET'])
 def get_user(user_id: int):
+    auth_token = request.headers.get('X-Session-Token');
+    if not auth_token:
+        return error_message('Non-existing authentication token'), 401
+    
     db = get_db()
     user = db.execute(
         '''
@@ -105,12 +109,13 @@ def get_user(user_id: int):
             dBirth AS birth_date, dNewMember AS membership_date
         FROM tmember
         WHERE nMemberID = ?
+        AND cAuthToken = ?
         ''',
-        (user_id,)
+        (user_id, auth_token)
     ).fetchone()
 
     if user == None:
-        return error_message('User not found'), 404
+        return error_message('User not found or wrong authentication token'), 404
 
     user_info = {key: user[key] for key in user.keys()}
     user_info['birth_date'] = str(user_info['birth_date'])
@@ -167,37 +172,16 @@ def post_user():
 
                 return jsonify({'user_id': user_id}), 201
 
-# Delete a specific user
-@bp_user.route('/users/<int:user_id>', methods=['DELETE'])
-def delete_user(user_id: int):
-    db = get_db()
-    cursor = db.cursor()
-    cursor.execute(
-        '''
-        DELETE FROM tloan
-        WHERE nMemberID = ?
-        ''',
-        (user_id,)
-    )
-
-    cursor.execute(
-        '''
-        DELETE FROM tmember
-        WHERE nMemberID = ?
-        ''',
-        (user_id,)
-    )
-    deleted_rows = cursor.rowcount
-    db.commit()
-    cursor.close()
-    if deleted_rows == 0:
-        return error_message('The user could not be deleted'), 500
-    
-    return jsonify({'status': 'ok'}), 200
-
 # Update a specific user
 @bp_user.route('/users/<int:user_id>', methods=['PUT'])
 def update_user(user_id: int):
+    auth_token = request.headers.get('X-Session-Token');
+    if not auth_token:
+        return error_message('Missing authentication token'), 401
+
+    if not token_is_valid(user_id, auth_token):
+        return error_message('Invalid authentication token'), 401
+    
     fields = {
         'cEmail': request.form.get('email'),
         'cName': request.form.get('first_name'),
@@ -227,9 +211,50 @@ def update_user(user_id: int):
         else:
             return jsonify({'status': 'ok'}), 200
         
+# Delete a specific user
+@bp_user.route('/users/<int:user_id>', methods=['DELETE'])
+def delete_user(user_id: int):
+    auth_token = request.headers.get('X-Session-Token');
+    if not auth_token:
+        return error_message('Missing authentication token'), 401
+
+    if not token_is_valid(user_id, auth_token):
+        return error_message('Invalid authentication token'), 401
+
+    db = get_db()
+    cursor = db.cursor()
+    cursor.execute(
+        '''
+        DELETE FROM tloan
+        WHERE nMemberID = ?
+        ''',
+        (user_id,)
+    )
+
+    cursor.execute(
+        '''
+        DELETE FROM tmember
+        WHERE nMemberID = ?
+        ''',
+        (user_id,)
+    )
+    deleted_rows = cursor.rowcount
+    db.commit()
+    cursor.close()
+    if deleted_rows == 0:
+        return error_message('The user could not be deleted'), 500
+    
+    return jsonify({'status': 'ok'}), 200
+
 # Loan a book
 @bp_user.route('/users/<int:user_id>/books/<int:book_id>', methods=['POST'])
 def loan_book(user_id: int, book_id: int):  
+    auth_token = request.headers.get('X-Session-Token');
+    if not auth_token:
+        return error_message('Missing authentication token'), 401
+
+    if not token_is_valid(user_id, auth_token):
+        return error_message('Invalid authentication token'), 401
     
     # Check that the book is not already on loan by this user
     db = get_db()

@@ -71,3 +71,19 @@ def user_by_token(token):
         return 0
     
     return user['user_id']
+
+"""
+Validates whether a user ID and its authentication token match
+"""
+def token_is_valid(user_id, auth_token):
+    db = get_db()
+    user = db.execute(
+        '''
+        SELECT COUNT(*) AS total
+        FROM tmember
+        WHERE nMemberID = ?
+        AND cAuthToken = ?
+        ''',
+        (user_id, auth_token)
+    ).fetchone()
+    return user['total'] > 0
