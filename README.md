@@ -168,6 +168,25 @@ All endpoints marked as "Auth" require authentication via the session token `X-S
     "error": "Incorrect password format"
 }
 ```
+- DELETE /users/2683
+```json
+{
+    "status": "ok"
+}
+```
+- POST /auth/login
+```json
+{
+    "user_id": 2683,
+    "auth_token": "899a3173-d1bf-4a80-ae70-2c8377be2b02",
+    "is_admin": 0
+}
+```
+```json
+{
+    "error": "Wrong credentials"
+}
+```
 - PUT /users/2683
 ```json
 {
@@ -179,23 +198,14 @@ All endpoints marked as "Auth" require authentication via the session token `X-S
     "error": "Incorrect parameters"
 }
 ```
-- DELETE /users/2683
 ```json
 {
-    "status": "ok"
-}
-```
-- POST /users/login
-```json
-{
-    "user_id": 2683,
-    "auth_token": "899a3173-d1bf-4a80-ae70-2c8377be2b02",
-    "is_admin": 0
+    "error": "Missing authentication token"
 }
 ```
 ```json
 {
-    "error": "Wrong credentials"
+    "error": "Invalid authentication token"
 }
 ```
 - POST /users/13/books/1251
@@ -209,7 +219,17 @@ All endpoints marked as "Auth" require authentication via the session token `X-S
     "error": "This user has still this book on loan"
 }
 ```
-- GET /admin/books/1251
+```json
+{
+    "error": "Missing authentication token"
+}
+```
+```json
+{
+    "error": "Invalid authentication token"
+}
+```
+- GET /admin/2687/books/1251
 ```json
 {
     "title": "Do Androids Dream of Electric Sheep?",
@@ -230,7 +250,17 @@ All endpoints marked as "Auth" require authentication via the session token `X-S
     ]
 }
 ```
-- POST /admin/books
+```json
+{
+    "error": "Missing authentication token"
+}
+```
+```json
+{
+    "error": "Invalid authentication token"
+}
+```
+- POST /admin/2687/books
 ```json
 {
     "book_id": 1999
@@ -251,7 +281,17 @@ All endpoints marked as "Auth" require authentication via the session token `X-S
     "error": "The publishing company does not exist"
 }
 ```
-- POST /admin/authors
+```json
+{
+    "error": "Missing authentication token"
+}
+```
+```json
+{
+    "error": "Invalid authentication token"
+}
+```
+- POST /admin/2687/authors
 ```json
 {
     "author_id": 510
@@ -267,7 +307,17 @@ All endpoints marked as "Auth" require authentication via the session token `X-S
     "error": "The author already exists"
 }
 ```
-- POST /admin/publishers
+```json
+{
+    "error": "Missing authentication token"
+}
+```
+```json
+{
+    "error": "Invalid authentication token"
+}
+```
+- POST /admin/2687/publishers
 ```json
 {
     "publisher_id": 158
@@ -283,6 +333,32 @@ All endpoints marked as "Auth" require authentication via the session token `X-S
     "error": "The publisher already exists"
 }
 ```
+```json
+{
+    "error": "Missing authentication token"
+}
+```
+```json
+{
+    "error": "Invalid authentication token"
+}
+```
+- POST /auth/logout
+```json
+{
+    "status": "ok"
+}
+```
+```json
+{
+    "error": "Missing authentication token"
+}
+```
+```json
+{
+    "error": "Invalid authentication token"
+}
+```
 
 ## Execution
 1. Start Docker Desktop
@@ -291,7 +367,7 @@ All endpoints marked as "Auth" require authentication via the session token `X-S
 The API will be available at `http://localhost:8080`.
 
 ## Data reset
-In case a data reset is necessary, the original database is at `data/librarylite_original.db`. It can be copied to `data/librarylite.db`.
+In case a data reset is necessary, the original database is at `data/librarylite_original.db`. It can be copied to `data/librarylite.db`. A Docker image rebuild might be necessary for a full database reset.
 
 ## Tools
 SQLite3 / Flask / Python
