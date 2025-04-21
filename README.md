@@ -362,9 +362,12 @@ All endpoints marked as "Auth" require authentication via the session token `X-S
 
 ## Execution
 1. Start Docker Desktop
-2. In the command line, run `docker-compose up -d`. The API will be available at `http://localhost:8080`.
+2. In the command line, run `docker-compose up -d`
 
 The API will be available at `http://localhost:8080`.
+
+## Testing
+A Postman collection and the corresponding Postman environment are included in the `postman` folder.
 
 ## Data reset
 In case a data reset is necessary, the original database is at `data/librarylite_original.db`. It can be copied to `data/librarylite.db`. A Docker image rebuild might be necessary for a full database reset.
