@@ -361,10 +361,8 @@ All endpoints marked as "Auth" require authentication via the session token `X-S
 ```
 
 ## Execution
-1. Start Docker Desktop
-2. In the command line, run `docker-compose up -d`
-
-The API will be available at `http://localhost:8080`.
+- Run the Docker container: `docker compose up -d`. The API will be available at `http://localhost:8080`.
+- Stop the Docker container: `docker compose down -v`
 
 ## Testing
 A Postman collection and the corresponding Postman environment are included in the `postman` folder.
