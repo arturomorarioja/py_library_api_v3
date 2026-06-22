@@ -1,0 +1,26 @@
+{
+  "name": "py_library_api_v3",
+  "version": "1.0.0",
+  "description": "Python Flask API that serves e-book information in the context of a digital online library.",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test",
+    "test:api": "playwright test tests/library-api-v3.spec.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arturomorarioja/py_library_api_v3.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/arturomorarioja/py_library_api_v3/issues"
+  },
+  "homepage": "https://github.com/arturomorarioja/py_library_api_v3#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.61.0",
+    "@types/node": "^26.0.0"
+  }
+}

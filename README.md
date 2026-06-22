@@ -365,7 +365,11 @@ All endpoints marked as "Auth" require authentication via the session token `X-S
 - Stop the Docker container: `docker compose down -v`
 
 ## Testing
-A Postman collection and the corresponding Postman environment are included in the `postman` folder.
+For the sake of comparison, the same testing suite is implemented with two different tools:
+- A Postman collection and the corresponding Postman environment are included in the `postman` folder
+- Playwright tests are included in the `tests` folder
+
+A GitHub Actions CI job runs the Playwright tests on push and pull requests. It is in `.github/workflows`
 
 ## Data reset
 In case a data reset is necessary, the original database is at `data/librarylite_original.db`. It can be copied to `data/librarylite.db`. A Docker image rebuild might be necessary for a full database reset.
