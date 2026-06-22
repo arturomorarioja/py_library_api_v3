@@ -378,4 +378,5 @@ In case a data reset is necessary, the original database is at `data/librarylite
 SQLite3 / Flask / Python
 
 ## Author
-Arturo Mora-Rioja
+SQLite database, Python Flask API, and Postman tests created by Arturo Mora-Rioja.
+Playwright tests and CI job written by Codex 5.5, prompted by Arturo Mora-Rioja.
